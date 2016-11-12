@@ -61,7 +61,7 @@ public class Molecule {
     }
 
     /**
-     * 
+     *
      * @param a1
      * @param a2
      * @param bondStrength
@@ -268,5 +268,61 @@ public class Molecule {
                     && Atom.isEquivalent(this.from, b.from)
                     && Atom.isEquivalent(this.to, b.to);
         }
+    }
+    private int vertexCount;
+    private int startVertex;
+    // Change the vertex the iterator will start DFS from
+    public void setStartVertex(int v){
+        if (v < vertexCount && v >= 0){
+            startVertex = v;
+        } else {
+            throw new IllegalArgumentException("Cannot set iteration start vertex to " + v + ".");
+        }
+    }
+
+    // A class that iterates through the vertices of this graph, starting with a given vertex.
+    // Does not necessarily iterate through all vertices in the graph: if the iteration starts
+    // at a vertex v, and there is no path from v to a vertex w, then the iteration will not
+    // include w
+    private class DFSIterator implements Iterator<Integer> {
+
+        private Stack<Integer> fringe;
+        private HashSet<Integer> visited;
+
+        public DFSIterator(Integer start) {
+            //your code here
+            fringe = new Stack<>();
+            visited = new HashSet<>();
+            setStartVertex(start);
+            fringe.push(start);
+            visited.add(start);
+        }
+
+        public boolean hasNext() {
+            //your code here
+            if (!(fringe.empty())) {
+                return true;
+            }
+            return false;
+        }
+
+        public Atom next() {
+            Atom curr = fringe.pop();
+            List children = neighbors(curr);
+            for (Object i : children) {
+                if (!visited.contains(i)) {
+                    fringe.push((Integer) i);
+                    visited.add((Integer) i);
+                }
+            }
+            return curr;
+        }
+
+        //ignore this method
+        public void remove() {
+            throw new UnsupportedOperationException(
+                    "vertex removal not implemented");
+        }
+
     }
 }
