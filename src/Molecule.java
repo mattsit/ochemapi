@@ -71,8 +71,24 @@ public class Molecule {
         stereochem.remove(a);
     }
 
-    public void changeBond(Bond b, int bondStrength) {
-        b.bondStrength = bondStrength;
+    /**
+     *
+     * @return 1 if success, 0 if fail.
+     */
+    public int changeBond(Atom a1, Atom a2, int bondStrength) {
+
+        for (Bond b1 : adjLists.get(a1)) {
+            if (Atom.isEquivalent(b1.getTo(), a2)) {
+                b1.bondStrength = bondStrength;
+                for (Bond b2 : adjLists.get(a2)) {
+                    if (Atom.isEquivalent(b2.getTo(), a1)) {
+                        b2.bondStrength = bondStrength;
+                        return 1;
+                    }
+                }
+            }
+        }
+        return 0;
     }
 
     /**

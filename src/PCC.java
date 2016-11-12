@@ -10,9 +10,24 @@ public class PCC extends Reagent {
      *
      */
     public void action(Molecule m) {
-        m.get(new Atom(8)); // Oxygen
+        Atom oxygen = m.get(new Atom(8));
 
+        // Remove the Hydrogen
+        for (Object o : m.neighbors(oxygen)) {
+            Atom a = (Atom)o;
+            if (Atom.isEquivalent(a, new Atom(1))) {
+                m.removeAtom(a);
+                break;
+            }
+        }
 
-        return new Molecule();
+        // Change single bond to double bond between O and C.
+        for (Object o : m.neighbors(oxygen)) {
+            Atom a = (Atom)o;
+            if (Atom.isEquivalent(a, new Atom(6))) {
+                m.changeBond(a, oxygen, 2);
+                break;
+            }
+        }
     }
 }
