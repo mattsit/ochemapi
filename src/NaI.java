@@ -3,7 +3,7 @@
  */
 public class NaI extends Reagent {
 
-    Atom I = new Atom(53);
+    private Atom I = new Atom(53);
     public NaI() {
         Molecule nai = new Molecule();
         Atom Na = new Atom(11);
@@ -12,7 +12,7 @@ public class NaI extends Reagent {
         nai.addBond(Na, I);
     }
 
-    public void toReact(Molecule m) {
+    public void action(Molecule m) {
         //you need to first look at the molecule parameter and then take the I from NaI to
         // replace the molecule m's leaving group (could be F, Cl, Br)
             // remove the atom (F, Cl, or Br)

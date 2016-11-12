@@ -2,7 +2,7 @@
  * Created by DebbiePao on 11/12/16.
  */
 import java.util.*;
-public class Molecule {
+public class Molecule implements Iterable<Atom> {
 
     private HashMap<Atom, LinkedList<Bond>> adjLists;
     private HashMap<Atom, Boolean> isVisited;
@@ -269,38 +269,26 @@ public class Molecule {
                     && Atom.isEquivalent(this.to, b.to);
         }
     }
-    private int vertexCount;
-    private int startVertex;
-    // Change the vertex the iterator will start DFS from
-    public void setStartVertex(int v){
-        if (v < vertexCount && v >= 0){
-            startVertex = v;
-        } else {
-            throw new IllegalArgumentException("Cannot set iteration start vertex to " + v + ".");
-        }
+
+    public Iterator<Atom> iterator() {
+        return new DFSIterator();
     }
 
-    // A class that iterates through the vertices of this graph, starting with a given vertex.
-    // Does not necessarily iterate through all vertices in the graph: if the iteration starts
-    // at a vertex v, and there is no path from v to a vertex w, then the iteration will not
-    // include w
-    private class DFSIterator implements Iterator<Integer> {
+    private class DFSIterator implements Iterator<Atom> {
 
-        private Stack<Integer> fringe;
-        private HashSet<Integer> visited;
+        private Stack<Atom> fringe;
+        private HashSet<Atom> visited;
 
-        public DFSIterator(Integer start) {
-            //your code here
+        public DFSIterator() {
             fringe = new Stack<>();
             visited = new HashSet<>();
-            setStartVertex(start);
+            Atom start = adjLists.keySet().iterator().next();
             fringe.push(start);
             visited.add(start);
         }
 
         public boolean hasNext() {
-            //your code here
-            if (!(fringe.empty())) {
+            if (!fringe.empty()) {
                 return true;
             }
             return false;
@@ -309,20 +297,18 @@ public class Molecule {
         public Atom next() {
             Atom curr = fringe.pop();
             List children = neighbors(curr);
-            for (Object i : children) {
-                if (!visited.contains(i)) {
-                    fringe.push((Integer) i);
-                    visited.add((Integer) i);
+            for (Object o : children) {
+                Atom a = (Atom)o;
+                if (!visited.contains(a)) {
+                    fringe.push(a);
+                    visited.add(a);
                 }
             }
             return curr;
         }
 
-        //ignore this method
         public void remove() {
-            throw new UnsupportedOperationException(
-                    "vertex removal not implemented");
+            throw new UnsupportedOperationException();
         }
-
     }
 }
