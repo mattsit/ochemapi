@@ -37,6 +37,58 @@ public class Molecule {
         //TODO Check stereochem
     }
 
+    /** Removes the specified bond between the two atoms.
+     *
+     * @return 1 if success, 0 if fail.
+     */
+    public int removeBond(Atom a1, Atom a2) {
+        for (Bond b1 : adjLists.get(a1)) {
+            if (Atom.isEquivalent(b1.getTo(), a2)) {
+                adjLists.get(a1).remove(b1);
+
+                for (Bond b2 : adjLists.get(a2)) {
+                    if (Atom.isEquivalent(b2.getTo(), a1)) {
+                        adjLists.get(a2).remove(b2);
+                        return 1;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    public void removeAtom(Atom a) {
+        for (Bond b1 : adjLists.get(a)) {
+            for (Bond b2 : adjLists.get(b1.getTo())) {
+                if (Atom.isEquivalent(b2.getTo(), a)) {
+                    adjLists.get(b1.getTo()).remove(b2);
+                    break;
+                }
+            }
+        }
+        adjLists.remove(a);
+        isVisited.remove(a);
+        stereochem.remove(a);
+    }
+
+    public void changeBond(Bond b, int bondStrength) {
+        b.bondStrength = bondStrength;
+    }
+
+    /**
+     * Fetches the instance of the atom located within the molecule equivalent to the argument atom.
+     *
+     * @param a an atom equivalent to the desired atom from the molecule
+     * @return the instance of the requested atom contained within the molecule
+     */
+    public Atom get(Atom a) {
+        for (Atom a2 : adjLists.keySet()) {
+            if (Atom.isEquivalent(a, a2))
+                return a2;
+        }
+        return null;
+    }
+
     /**
      * This function is used by addBond() to determine whether storing the stereochemical
      * relationship should be required/is necessary.
