@@ -16,20 +16,57 @@ public class Molecule {
         this.stereochem = new HashMap<>();
     }
 
+    /** Returns the atomic weight of a molecule.
+     *
+     * @return Double atomic weight of a molecule.
+     */
+    public double atomicWeight() {
+        double ans = 0.0;
+        for (Object o : adjLists.keySet()) {
+            Atom a = (Atom) o;
+            ans += a.getAtomicMass();
+        }
+        return ans;
+    }
+
+    /** Adds an atom the molecule.
+     *
+     * @param a Atom to be added to the molecule.
+     */
+
     public void addAtom(Atom a) {
         adjLists.put(a, new LinkedList<>());
         isVisited.put(a, false);
         stereochem.put(a, 'X');
     }
 
+    /** Adds a single bond to the molecule between the two specified atoms.
+     *
+     * @param a1 first atom in single bond
+     * @param a2 second atom in single bond
+     */
     public void addBond(Atom a1, Atom a2) {
         addBond(a1, a2, 1, 'X');
     }
+
+    /** Adds a single, double, or triple bond to the molecule between the two specified atoms.
+     *
+     * @param a1 first atom in the bond
+     * @param a2 second atom in the bond
+     * @param bondStrength denotes single, double, or triple bond
+     */
 
     public void addBond(Atom a1, Atom a2, int bondStrength) {
         addBond(a1, a2, bondStrength, 'X');
     }
 
+    /**
+     * 
+     * @param a1
+     * @param a2
+     * @param bondStrength
+     * @param stereochem
+     */
     public void addBond(Atom a1, Atom a2, int bondStrength, char stereochem) {
         adjLists.get(a1).add(new Bond(a1, a2, bondStrength));
         adjLists.get(a2).add(new Bond(a2, a1, bondStrength));
@@ -90,6 +127,20 @@ public class Molecule {
         }
         return 0;
     }
+
+    public boolean isEqual(Molecule m1, Molecule m2) {
+        for (Object o: m1.adjLists.keySet()) {
+            for (Object a : m2.adjLists.keySet()) {
+                Atom o2 = (Atom) o;
+                Atom a2 = (Atom) a;
+                if (!Atom.equals(o2, a2)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
     /**
      * Fetches the instance of the atom located within the molecule equivalent to the argument atom.

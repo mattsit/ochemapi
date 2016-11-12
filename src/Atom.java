@@ -52,6 +52,13 @@ public class Atom {
         return Atom.atom_data[this.atomic_num][1];
     }
 
+    /** Gives you the atomic mass of the element.
+     *
+     * @return Integer atomic mass of the atom.
+     */
+
+    public Integer getAtomicMass() { return Integer.parseInt(Atom.atom_data[this.atomic_num][2]); }
+
     /** Checks to see if the two atoms are identical in that they have the same atomic number and
      * if they are the same object.
      *
@@ -89,59 +96,59 @@ public class Atom {
      *
      */
     private static String[][] atom_data = {
-        {"Undefined", "XX"},
-        {"Hydrogen", "H"},      // 1
-        {"Helium", "He"},       // 2
-        {"Lithium", "Li"},      // 3
-        {"Beryllium", "Be"},    // 4
-        {"Boron", "B"},         // 5
-        {"Carbon", "C"},        // 6
-        {"Nitrogen", "N"},      // 7
-        {"Oxygen", "O"},        // 8
-        {"Fluorine", "F"},      // 9
-        {"Neon", "Ne"},         // 10
-        {"Sodium", "Na"},       // 11
-        {"Magnesium", "Mg"},    // 12
-        {"Aluminium", "Al"},    // 13
-        {"Silicon", "Si"},      // 14
-        {"Phosphorus", "P"},    // 15
-        {"Sulfur", "S"},        // 16
-        {"Chlorine", "Cl"},     // 17
-        {"Argon", "Ar"},        // 18
-        {"Potassium", "K"},     // 19
-        {"Calcium", "Ca"},      // 20
-        {"Scandium", "Sc"},     // 21
-        {"Titanium", "Ti"},     // 22
-        {"Vanadium", "V"},      // 23
-        {"Chromium", "Cr"},     // 24
-        {"Manganese", "Mn"},    // 25
-        {"Iron", "Fe"},         // 26
-        {"Cobalt", "Co"},       // 27
-        {"Nickel", "Ni"},       // 28
-        {"Copper", "Cu"},       // 29
-        {"Zinc", "Zn"},         // 30
-        {"Gallium", "Ga"},      // 31
-        {"Germanium", "Ge"},    // 32
-        {"Arsenic", "As"},      // 33
-        {"Selenium", "Se"},     // 34
-        {"Bromine", "Br"},      // 35
-        {"Krypton", "Kr"},      // 36
-        {"Rubidium", "Rb"},     // 37
-        {"Strontium", "Sr"},    // 38
-        {"Yttrium", "Y"},       // 39
-        {"Zirconium", "Z"},     // 40
-        {"Niobium", "Nb"},      // 41
-        {"Molybdenum", "Mo"},   // 42
-        {"Technetium", "Tc"},   // 43
-        {"Ruthenium", "Ru"},    // 44
-        {"Rhodium", "Rh"},      // 45
-        {"Palladium", "Pd"},    // 46
-        {"Silver", "Ag"},       // 47
-        {"Cadmium", "Cd"},      // 48
-        {"Indium", "In"},       // 49
-        {"Tin", "Sn"},          // 50
-        {"Antimony", "Sb"},     // 51
-        {"Tellurium", "Te"},    // 52
-        {"Iodine", "I"}         // 53
+        {"Undefined", "XX", "XX"},
+        {"Hydrogen", "H", "1.0079"},      // 1
+        {"Helium", "He", "4.0026"},       // 2
+        {"Lithium", "Li", "6.941"},      // 3
+        {"Beryllium", "Be", "9.0122"},    // 4
+        {"Boron", "B", "10.811"},         // 5
+        {"Carbon", "C", "12.0107"},        // 6
+        {"Nitrogen", "N", "14.0067"},      // 7
+        {"Oxygen", "O", "15.9994"},        // 8
+        {"Fluorine", "F", "18.9984"},      // 9
+        {"Neon", "Ne", "20.1797"},         // 10
+        {"Sodium", "Na", "22.9897"},       // 11
+        {"Magnesium", "Mg", "24.305"},    // 12
+        {"Aluminium", "Al", "26.9815"},    // 13
+        {"Silicon", "Si", "28.0855"},      // 14
+        {"Phosphorus", "P", "30.9738"},    // 15
+        {"Sulfur", "S", "32.065"},        // 16
+        {"Chlorine", "Cl", "35.453"},     // 17
+        {"Argon", "Ar", "39.948"},        // 18
+        {"Potassium", "K", "39.0983"},     // 19
+        {"Calcium", "Ca", "40.078"},      // 20
+        {"Scandium", "Sc", "44.9559"},     // 21
+        {"Titanium", "Ti", "47.867"},     // 22
+        {"Vanadium", "V", "50.9415"},      // 23
+        {"Chromium", "Cr", "51.9961"},     // 24
+        {"Manganese", "Mn", "54.938"},    // 25
+        {"Iron", "Fe", "55.845"},         // 26
+        {"Cobalt", "Co", "58.9332"},       // 27
+        {"Nickel", "Ni", "58.6934"},       // 28
+        {"Copper", "Cu", "63.546"},       // 29
+        {"Zinc", "Zn", "65.39"},         // 30
+        {"Gallium", "Ga", "69.723"},      // 31
+        {"Germanium", "Ge", "72.64"},    // 32
+        {"Arsenic", "As", "74.9216"},      // 33
+        {"Selenium", "Se", "78.96"},     // 34
+        {"Bromine", "Br", "79.904"},      // 35
+        {"Krypton", "Kr", "83.8"},      // 36
+        {"Rubidium", "Rb", "85.4678"},     // 37
+        {"Strontium", "Sr", "87.62"},    // 38
+        {"Yttrium", "Y", "88.9059"},       // 39
+        {"Zirconium", "Z", "91.224"},     // 40
+        {"Niobium", "Nb", "92.9064"},      // 41
+        {"Molybdenum", "Mo", "95.94"},   // 42
+        {"Technetium", "Tc", "98"},   // 43
+        {"Ruthenium", "Ru", "101.07"},    // 44
+        {"Rhodium", "Rh", "102.9055"},      // 45
+        {"Palladium", "Pd", "106.42"},    // 46
+        {"Silver", "Ag", "107.8682"},       // 47
+        {"Cadmium", "Cd", "112.411"},      // 48
+        {"Indium", "In", "114.818"},       // 49
+        {"Tin", "Sn", "118.71"},          // 50
+        {"Antimony", "Sb", "121.76"},     // 51
+        {"Tellurium", "Te", "127.6"},    // 52
+        {"Iodine", "I", "126.9045"}         // 53
     };
 }
