@@ -12,6 +12,8 @@ public class Molecule {
 
     public Molecule() {
         this.adjLists = new HashMap<>();
+        this.isVisited = new HashMap<>();
+        this.stereochem = new HashMap<>();
     }
 
     public void addAtom(Atom a) {
@@ -43,7 +45,7 @@ public class Molecule {
      *  - There are 4 atomic groups extending from the atom (no double/triple bonds).
      *  - Each of these groups are nonequivalent/unique.
      */
-    private boolean isStereocenter(Atom a) {
+    public boolean isStereocenter(Atom a) {
         if (adjLists.get(a).size() != 4) {
             return false;
         }

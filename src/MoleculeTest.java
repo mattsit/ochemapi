@@ -1,11 +1,17 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+
 public class MoleculeTest {
     //alkane
     //double bond
     //benzene
 
+    @Test
     public void isWater() {
         Molecule water = new Molecule();
         Atom o = new Atom(8);
@@ -16,11 +22,13 @@ public class MoleculeTest {
         water.addAtom(h2);
         water.addBond(o, h);
         water.addBond(o, h2);
+        assertFalse(water.isStereocenter(o));
     }
 
+    @Test
     public void isDoubleBond() {
         Molecule alkene = new Molecule();
-        Atom c = new Atom(4);
+        Atom c = new Atom(6);
         Atom h = new Atom(1);
         Atom h2 = new Atom(1);
         Atom o = new Atom(8);
@@ -33,6 +41,7 @@ public class MoleculeTest {
         alkene.addBond(c, o, 2);
     }
 
+    @Test
     public void isCyclic() {
         Molecule benzene = new Molecule();
         Atom c = new Atom(4);
