@@ -44,7 +44,7 @@ public class MoleculeTest {
     @Test
     public void isCyclic() {
         Molecule benzene = new Molecule();
-        Atom c = new Atom(4);
+        Atom c = new Atom(6);
         Atom h = new Atom(1);
         benzene.addAtom(c);
         benzene.addAtom(h);
@@ -54,6 +54,30 @@ public class MoleculeTest {
         benzene.addBond(c, h, 2);
         benzene.addBond(c, h);
         benzene.addBond(c, h, 2);
+    }
 
+    @Test
+    public void testPCC() {
+        Molecule m = new Molecule();
+
+        Atom c1 = new Atom(6);
+        Atom c2 = new Atom(6);
+        Atom c3 = new Atom(6);
+        Atom o = new Atom(8);
+        Atom h = new Atom(1);
+
+        m.addAtom(c1);
+        m.addAtom(c2);
+        m.addAtom(c3);
+        m.addAtom(o);
+        m.addAtom(h);
+
+        m.addBond(c1, c2);
+        m.addBond(c2, c3);
+        m.addBond(c2, o);
+        m.addBond(o, h);
+
+        Reagent pcc = new PCC();
+        pcc.action(m);
     }
 }
