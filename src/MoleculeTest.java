@@ -5,6 +5,9 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import javax.swing.*;
+import java.awt.*;
+
 
 public class MoleculeTest {
 
@@ -78,7 +81,7 @@ public class MoleculeTest {
         pcc.action(m);
     }
 
-    @Test
+    //@Test
     public void testNaI() {
         Molecule m = new Molecule();
         Atom c1 = new Atom(6);
@@ -137,6 +140,19 @@ public class MoleculeTest {
         m.addBond(c2, h6);
         m.addBond(c2, h7);
         m.addBond(c2, h8);
+
+        JFrame f = new JFrame("Organic Chemistry");
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        f.setSize(700, 700);
+
+        JPanel container = new JPanel();
+        container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
+
+        JPanel p = new MoleculePanel(m);
+        container.add(p);
+        f.getContentPane().add(container);
+        f.setBackground(Color.RED);
+        f.setVisible(true);
 
     }
 }

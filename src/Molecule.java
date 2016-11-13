@@ -24,38 +24,36 @@ public class Molecule implements Iterable<Atom> {
         double ans = 0.0;
         for (Object o : adjLists.keySet()) {
             Atom a = (Atom) o;
+            ans += a.getAtomicMass();
         }
         return ans;
     }
 
-    public HashMap<Atom, LinkedList<Bond>> copyAdjacent() {
-        HashMap<Atom, LinkedList<Bond>> ans = new HashMap<>();
-        for (Object o : adjLists.keySet()) {
-            Atom a = (Atom) o;
-            LinkedList<Bond> b = adjLists.get(a);
-            ans.put(a, b);
-        }
-        return ans;
+    public Molecule copy() {
+        Molecule result = new Molecule();
+        copyAdjLists(result);
+        copyIsVisited(result);
+        copyStereochem(result);
+        return result;
     }
 
-    public HashMap<Atom, Boolean> copyVisited() {
-        HashMap<Atom, Boolean> ans = new HashMap<>();
-        for (Object o : isVisited.keySet()) {
-            Atom a = (Atom) o;
-            Boolean b = isVisited.get(a);
-            ans.put(a, b);
+    private void copyAdjLists(Molecule m) {
+        m.adjLists = (HashMap<Atom, LinkedList<Bond>>)adjLists.clone();
+        for (Atom a : adjLists.keySet()) {
+            LinkedList<Bond> copy = new LinkedList<>();
+            for (Bond b : adjLists.get(a)) {
+                copy.add(b.copy());
+            }
+            m.adjLists.put(a, copy);
         }
-        return ans;
     }
 
-    public HashMap<Atom, Character> copyStereochem() {
-        HashMap<Atom, Character> ans = new HashMap<>();
-        for (Object o : stereochem.keySet()) {
-            Atom a = (Atom) o;
-            Character c = stereochem.get(a);
-            ans.put(a, c);
-        }
-        return ans;
+    private void copyIsVisited(Molecule m) {
+        m.isVisited = (HashMap<Atom, Boolean>)isVisited.clone();
+    }
+
+    private void copyStereochem(Molecule m) {
+        m.stereochem = (HashMap<Atom, Character>)stereochem.clone();
     }
 
     /** Adds an atom the molecule.
@@ -385,6 +383,10 @@ public class Molecule implements Iterable<Atom> {
             return this.bondStrength == b.bondStrength
                     && Atom.equals(this.from, b.from)
                     && Atom.equals(this.to, b.to);
+        }
+
+        public Bond copy() {
+            return new Bond(from, to, bondStrength);
         }
     }
 

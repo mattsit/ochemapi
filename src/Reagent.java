@@ -11,5 +11,5 @@ public abstract class Reagent extends Molecule {
      *
      * @param m the given molecule
      */
-    public abstract void action(Molecule m);
+    public abstract Molecule action(Molecule m);
 }
