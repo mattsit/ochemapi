@@ -26,7 +26,7 @@ public class SampleMolecule {
         return alcohol;
     }
 
-    public static Molecule bromine() { //test naI or LiF
+    public static Molecule bromine() { //test naI or LiF or water
         Molecule bromine = new Molecule();
         Atom c1 = new Atom(6);
         Atom c2 = new Atom(6);
@@ -60,7 +60,6 @@ public class SampleMolecule {
         Atom c1 = new Atom(6);
         Atom c2 = new Atom(6);
         Atom c3 = new Atom(6);
-        Atom c4 = new Atom(6);
         Atom br = new Atom(35);
         Atom h = new Atom(1);
         Atom h2 = new Atom(1);
@@ -69,15 +68,11 @@ public class SampleMolecule {
         Atom h5 = new Atom(1);
         Atom h6 = new Atom(1);
         Atom h7 = new Atom(1);
-        Atom h8 = new Atom(1);
-        Atom h9 = new Atom(1);
         ans.addAtom(c1);
         ans.addAtom(c2);
         ans.addBond(c1, c2);
         ans.addAtom(c3);
-        ans.addAtom(c4);
         ans.addBond(c2, c3);
-        ans.addBond(c3, c4);
         ans.addAtom(br);
         ans.addBond(c3, br);
         ans.addAtom(h);
@@ -93,50 +88,8 @@ public class SampleMolecule {
         ans.addAtom(h6);
         ans.addBond(h6, c3);
         ans.addAtom(h7);
-        ans.addAtom(h8);
-        ans.addAtom(h9);
-        ans.addBond(c4, h7);
-        ans.addBond(c4, h8);
-        ans.addBond(c4, h9);
+        ans.addBond(h7, c3);
         return ans;
-    }
-
-    public static Molecule water() { //test water
-        Molecule m = new Molecule();
-        Atom cl = new Atom(17);
-        Atom c1 = new Atom(6);
-        Atom c2 = new Atom(6);
-        Atom c3 = new Atom(6);
-        Atom h = new Atom(1);
-        Atom h2 = new Atom(1);
-        Atom h3 = new Atom(1);
-        Atom h4 = new Atom(1);
-        Atom h5 = new Atom(1);
-        Atom h6 = new Atom(1);
-        Atom h7 = new Atom(1);
-
-        m.addAtom(cl);
-        m.addAtom(c1);
-        m.addAtom(c2);
-        m.addBond(c1, c2);
-        m.addAtom(c3);
-        m.addBond(c2, c3);
-        m.addAtom(h);
-        m.addAtom(h2);
-        m.addAtom(h3);
-        m.addBond(c1, h);
-        m.addBond(c1, h2);
-        m.addBond(c1, h3);
-        m.addAtom(h4);
-        m.addAtom(h5);
-        m.addBond(c2, h4);
-        m.addBond(c2, h5);
-        m.addAtom(h6);
-        m.addAtom(h7);
-        m.addBond(c3, h6);
-        m.addBond(c3, h7);
-        m.addBond(c3, cl);
-        return m;
     }
 
     public static Molecule lif() { //test LiF

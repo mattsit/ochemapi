@@ -23,7 +23,6 @@ public class PanelTools extends JPanel {
         btnMech.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        //JFrame cards = (JFrame) SwingUtilities.getWindowAncestor(this);
         JPanel me = this;
         btnMW.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

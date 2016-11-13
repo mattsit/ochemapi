@@ -22,7 +22,7 @@ public class MoleculePanel extends JPanel {
         super.paintComponent(g);
         g.setFont(g.getFont().deriveFont(g.getFont().getSize() * 2F).deriveFont(Font.BOLD));
         visited = new ArrayList<>();
-        drawHelper(g, m.iterator(), 100, 100, 30, 30);
+        drawHelper(g, m.iterator(), 75, 75, 30, 30);
         setBackground(new Color(130, 147, 153));
     }
 

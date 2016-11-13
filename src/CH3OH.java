@@ -51,31 +51,28 @@ public class CH3OH extends Reagent {
         Atom getbr = copy.get(Br);
 
         //Remove Leaving Group (F, Cl, or Br)
-        for (Object a : copy.neighbors(C)) {
-            Atom rem = (Atom) a;
-            if (getf != null) {
-                if (Atom.isEquivalent(rem, F)) {
-                    copy.removeAtom(F);
-                    break;
-                }
-            }
-            else if (getcl != null) {
-                if (Atom.isEquivalent(rem, Cl)) {
-                    copy.removeAtom(Cl);
-                    break;
-                }
-            }
-            else {
-                if (Atom.isEquivalent(rem, Br)) {
-                    copy.removeAtom(Br);
-                    break;
-                }
+        Atom lg = copy.get(F);
+        if (lg == null)
+            lg = copy.get(Cl);
+        if (lg == null)
+            lg = copy.get(Br);
+        Atom copyC = new Atom(0);
+        boolean flag = false;
+        for (Object o : copy.neighbors(lg)) {
+            if (Atom.isEquivalent((Atom)o, C)) {
+                copyC = (Atom) o;
+                flag = true;
+                break;
             }
         }
+        if (!flag)
+            return null;
+
+        copy.removeAtom(lg);
 
         //Add OCH3
         copy.addAtom(o);
-        copy.addBond(C, o);
+        copy.addBond(copyC, o);
         copy.addAtom(c2);
         copy.addBond(o, c2);
         copy.addAtom(h1);
