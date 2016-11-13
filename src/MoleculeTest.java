@@ -7,9 +7,6 @@ import org.junit.Test;
 
 
 public class MoleculeTest {
-    //alkane
-    //double bond
-    //benzene
 
     @Test
     public void isWater() {
@@ -79,5 +76,23 @@ public class MoleculeTest {
 
         Reagent pcc = new PCC();
         pcc.action(m);
+    }
+
+    @Test
+    public void testNaI() {
+        Molecule m = new Molecule();
+        Atom c1 = new Atom(6);
+        Atom c2 = new Atom(6);
+        Atom c3 = new Atom(6);
+        Atom i = new Atom(53);
+        Atom br = new Atom(35);
+
+        m.addAtom(c1);
+        m.addAtom(c2);
+        m.addAtom(c3);
+        m.addAtom(br);
+
+        Reagent nai = new NaI();
+        nai.action(m);
     }
 }
