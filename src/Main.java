@@ -13,7 +13,7 @@ public class Main {
         JPanel container = new JPanel();
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
-
+/*
         Molecule alcohol = new Molecule();
         Atom c = new Atom(6);
         Atom h = new Atom(1);
@@ -32,7 +32,7 @@ public class Main {
         alcohol.addBond(c, h3);
         alcohol.addBond(c, o);
         alcohol.addBond(h4, o);
-/*
+*/
         Molecule m = new Molecule();
         Atom si = new Atom(14);
         Atom si2 = new Atom(14);
@@ -73,12 +73,12 @@ public class Main {
         m.addBond(c2, h7);
         m.addBond(c2, h8);
         m.addBond(c1,si2);
-        */
 
 
-        JPanel p = new MoleculePanel(alcohol);
-        Molecule alcohol2 = new PCC().action(alcohol);
-        JPanel p2 = new MoleculePanel(alcohol2);
+
+        JPanel p = new MoleculePanel(m);
+        //Molecule alcohol2 = new PCC().action(alcohol);
+        JPanel p2 = new MoleculePanel(m);
 
 
         //p.setBackground(Color.blue);

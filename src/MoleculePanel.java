@@ -32,7 +32,6 @@ public class MoleculePanel extends JPanel {
         Atom a = (Atom)mIter.next();
         visited.add(a);
         int numNeighbors = 0;
-        int i = 1;
         for (Object o : m.neighbors(a)) {
             if (visited.contains(o))
                 numNeighbors--;
@@ -43,17 +42,12 @@ public class MoleculePanel extends JPanel {
             for (int j = 2; j <= bondStrength; j++) {
                 if (visited.contains(o))
                     break;
-                if (i == 4) {
-                    g.drawLine(x + 6, y - 14, x + dx + 6, y + dy - 14);
-                } else if (i == 3) {
-                    g.drawLine(x + 6, y - 6, x + dx + 6, y - dy - 6);
-                } else if (i == 2) {
-                    g.drawLine(x + 14, y - 6, x - dx + 14, y - dy - 6);
-                } else if (i == 1) {
-                    g.drawLine(x + 14, y - 14, x - dx + 14, y + dy - 14);
-                }
+
+                //g.setColor(Color.red);
+                System.out.println(dx);
+                System.out.println(dy);
+                g.drawLine(x + dy/6 + 10, y - 14, x + dx + dy/6 + 10, y + dy - 14);
             }
-            i++;
         }
         int curr = a.getValency() + numNeighbors;
 
@@ -83,16 +77,16 @@ public class MoleculePanel extends JPanel {
 
         if (curr == 4) {
             drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
-            drawHelper(g, mIter, x+dx, y+dx, -dx, dy);
-            drawHelper(g, mIter, x-dx, y+dx, -dx, -dy);
-            drawHelper(g, mIter, x+dx, y-dx, dx, dy);
+            drawHelper(g, mIter, x+dx, y-dy, dx, dy);
+            drawHelper(g, mIter, x-dx, y-dy, -dx, dy);
+            drawHelper(g, mIter, x-dx, y+dy, -dx, -dy);
         } else if (curr == 3) {
             drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
-            drawHelper(g, mIter, x+dx, y+dx, -dx, dy);
-            drawHelper(g, mIter, x-dx, y+dx, -dx, -dy);
+            drawHelper(g, mIter, x+dx, y-dy, dx, dy);
+            drawHelper(g, mIter, x-dx, y-dy, -dx, dy);
         } else if (curr == 2) {
             drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
-            drawHelper(g, mIter, x+dx, y+dx, -dx, dy);
+            drawHelper(g, mIter, x+dx, y-dy, dx, dy);
         } else if (curr == 1){
             drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
         }
