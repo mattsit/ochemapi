@@ -1,6 +1,10 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
+
+/**
+ * Class that represents the LiF reagent.
+ */
 public class LiF extends Reagent {
 
     private Atom F = new Atom(9);
@@ -12,6 +16,10 @@ public class LiF extends Reagent {
         lif.addBond(Li, F);
     }
 
+    /** Reacts LiF with the given molecule.
+     *
+     * @param m the given molecule
+     */
     public void action(Molecule m) {
         Atom C = new Atom(6);
         Atom F = new Atom(9);

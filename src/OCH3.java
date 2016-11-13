@@ -1,6 +1,10 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
+
+/**
+ * Class that represents the reagent OCH3-.
+ */
 public class OCH3 extends Reagent {
 
     Molecule och3 = new Molecule();
@@ -22,6 +26,10 @@ public class OCH3 extends Reagent {
         och3.addBond(c, h3);
     }
 
+    /** Reacts OCH3- with the molecule m.
+     *
+     * @param m molecule to be reacted with.
+     */
     public void action(Molecule m) {
         Atom C = new Atom(6);
         Atom F = new Atom(9);

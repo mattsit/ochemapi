@@ -1,10 +1,15 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
+
+/**
+ * A class that represents the reagent water (H2O).
+ */
 public class Water extends Reagent {
     Atom o = new Atom(8);
     Atom h = new Atom(1);
     Atom h2 = new Atom(1);
+
     public Water() {
         Molecule water = new Molecule();
         water.addAtom(o);
@@ -13,6 +18,11 @@ public class Water extends Reagent {
         water.addBond(o, h);
         water.addBond(o, h2);
     }
+
+    /** Reacts the reagent water with the given molecule.
+     *
+     * @param m the given molecule
+     */
     public void action(Molecule m) {
         Atom C = new Atom(6);
         Atom F = new Atom(9);

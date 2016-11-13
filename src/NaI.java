@@ -1,6 +1,10 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
+
+/**
+ * Class that represents the NaI reagent.
+ */
 public class NaI extends Reagent {
 
     private Atom I = new Atom(53);
@@ -12,11 +16,11 @@ public class NaI extends Reagent {
         nai.addBond(Na, I);
     }
 
+    /** Reacts the NaI reagent with the given molecule.
+     *
+     * @param m the given molecule
+     */
     public void action(Molecule m) {
-        //you need to first look at the molecule parameter and then take the I from NaI to
-        // replace the molecule m's leaving group (could be F, Cl, Br)
-            // remove the atom (F, Cl, or Br)
-            // change it to I
         Atom C = new Atom(6);
         Atom F = new Atom(9);
         Atom Cl = new Atom(17);
