@@ -19,12 +19,16 @@ public class MoleculePanel extends JPanel {
 
         int x = 30;
         int y = 30;
+        int dx = 30;
+        int dy = 30;
+
 
         for (Atom a : m) {
             g.drawString(a.getAtomSymbol(), x, y);
-            x+=20;
-            y+=20;
+            x+=dx;
+            y+=dy;
         }
+
         g.drawLine(10,10,30,30);
         setBackground(new Color(130, 147, 153));
     }

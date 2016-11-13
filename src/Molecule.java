@@ -348,40 +348,40 @@ public class Molecule implements Iterable<Atom> {
      */
 
     public Iterator<Atom> iterator() {
-        return new DFSIterator();
+        return new BFSIterator();
     }
 
     /**
      *
      */
 
-    private class DFSIterator implements Iterator<Atom> {
+    private class BFSIterator implements Iterator<Atom> {
 
-        private Stack<Atom> fringe;
+        private PriorityQueue<Atom> fringe;
         private HashSet<Atom> visited;
 
-        public DFSIterator() {
-            fringe = new Stack<>();
+        public BFSIterator() {
+            fringe = new PriorityQueue<>();
             visited = new HashSet<>();
             Atom start = adjLists.keySet().iterator().next();
-            fringe.push(start);
+            fringe.add(start);
             visited.add(start);
         }
 
         public boolean hasNext() {
-            if (!fringe.empty()) {
+            if (!fringe.isEmpty()) {
                 return true;
             }
             return false;
         }
 
         public Atom next() {
-            Atom curr = fringe.pop();
+            Atom curr = fringe.poll();
             List children = neighbors(curr);
             for (Object o : children) {
                 Atom a = (Atom)o;
                 if (!visited.contains(a)) {
-                    fringe.push(a);
+                    fringe.add(a);
                     visited.add(a);
                 }
             }
