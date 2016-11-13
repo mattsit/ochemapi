@@ -39,23 +39,23 @@ public class NaI extends Reagent {
         Atom getbr = copy.get(Br);
 
         //Remove Leaving Group (F, Cl, or Br)
-        for (Object a : copy.neighbors(C)) {
+        for (Object a : copy.neighbors(copy.get(C))) {
             Atom rem = (Atom) a;
             if (getf != null) {
                 if (Atom.isEquivalent(rem, F)) {
-                    copy.removeAtom(F);
+                    copy.removeAtom(rem);
                     break;
                 }
             }
             else if (getcl != null) {
                 if (Atom.isEquivalent(rem, Cl)) {
-                    copy.removeAtom(Cl);
+                    copy.removeAtom(rem);
                     break;
                 }
             }
             else {
                 if (Atom.isEquivalent(rem, Br)) {
-                    copy.removeAtom(Br);
+                    copy.removeAtom(rem);
                     break;
                 }
             }
@@ -63,7 +63,7 @@ public class NaI extends Reagent {
 
         //Add I
         copy.addAtom(I);
-        copy.addBond(C, I);
+        copy.addBond(copy.get(C), I);
 
         return copy;
     }
