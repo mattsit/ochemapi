@@ -27,13 +27,13 @@ public class PanelTools extends JPanel {
         JPanel me = this;
         btnMW.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new PanelMW();
+                new FrameMW();
             }
         });
 
         btnMech.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new PanelMech();
+                new FrameMech();
             }
         });
 

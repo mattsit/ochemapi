@@ -1,17 +1,15 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * Created by Matthew on 11/13/2016.
  */
-public class PanelMW extends JFrame {
+public class FrameMW extends JFrame {
 
     private int[] counts;
 
-    public PanelMW() {
+    public FrameMW() {
         super("Molecular Weight Calculator");
 
         counts = new int[18];
@@ -168,7 +166,7 @@ public class PanelMW extends JFrame {
         JFrame me = this;
         clear.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new PanelMW();
+                new FrameMW();
                 me.dispose();
             }
         });

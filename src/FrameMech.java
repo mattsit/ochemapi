@@ -4,9 +4,9 @@ import java.awt.*;
 /**
  * Created by Matthew on 11/13/2016.
  */
-public class PanelMech extends JFrame {
+public class FrameMech extends JFrame {
 
-    public PanelMech() {
+    public FrameMech() {
         super("Mechanisms and Molecular Representations");
 
         JTextField t = new JTextField();
