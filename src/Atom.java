@@ -59,10 +59,12 @@ public class Atom {
 
     /** Returns the atomic mass of the element.
      *
-     * @return Integer atomic mass of the atom.
+     * @return atomic mass of the atom.
      */
 
-    public Integer getAtomicMass() { return Integer.parseInt(Atom.atom_data[this.atomic_num][2]); }
+    public double getAtomicMass() {
+        return Double.parseDouble(Atom.atom_data[this.atomic_num][2]);
+    }
 
     /** Checks to see if the two atoms are identical in that they have the same atomic number and
      * if they are the same object.
