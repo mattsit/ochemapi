@@ -1,5 +1,10 @@
+import javax.smartcardio.Card;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 
 /**
  * Created by Matthew on 11/12/2016.
@@ -13,7 +18,7 @@ public class Main {
         JPanel container = new JPanel();
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
-/*
+
         Molecule alcohol = new Molecule();
         Atom c = new Atom(6);
         Atom h = new Atom(1);
@@ -32,7 +37,7 @@ public class Main {
         alcohol.addBond(c, h3);
         alcohol.addBond(c, o);
         alcohol.addBond(h4, o);
-*/
+/*
         Molecule m = new Molecule();
         Atom si = new Atom(14);
         Atom si2 = new Atom(14);
@@ -73,13 +78,16 @@ public class Main {
         m.addBond(c2, h7);
         m.addBond(c2, h8);
         m.addBond(c1,si2);
+*/
 
 
+        JPanel p = new MoleculePanel(alcohol);
+        Molecule alcohol2 = new PCC().action(alcohol);
+        JPanel p2 = new MoleculePanel(alcohol2);
 
-        JPanel p = new MoleculePanel(m);
-        //Molecule alcohol2 = new PCC().action(alcohol);
-        JPanel p2 = new MoleculePanel(m);
-
+        JPanel cards = new JPanel(new CardLayout());
+        cards.add(p, "Before");
+        cards.add(p2, "After");
 
         //p.setBackground(Color.blue);
         //JPanel mainMolecule = new JPanel();
@@ -91,12 +99,24 @@ public class Main {
         //p.add(new JButton("Button1"));
        // p.add(new JButton("Button2"));
        // p.add(new JButton("Button3"));
-        container.add(p);
-        container.add(p2);
+        //container.add(p);
+        //container.add(p2);
+        CardLayout cl = (CardLayout) cards.getLayout();
+        JButton j = new JButton("Switch");
+        j.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("hit");
+                cl.show(cards, "After");
+
+            }
+        });
+        p.add(j);
+        //switch.setBounds(10, 11, 110, 23);
+        //container.add(j);
+
         //f.getContentPane().add(p);
         //f.getContentPane().add(p2);
-        f.getContentPane().add(container);
-        f.setBackground(Color.RED);
+        f.getContentPane().add(cards);
         f.setVisible(true);
 
     }
