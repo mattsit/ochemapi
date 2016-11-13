@@ -1,0 +1,17 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    margin: 10px;
+    background: #edeae5;
+}
+
+#panel {
+    border: 1px solid black;
+}
+
+.button {
+    margin: 20px;
+    background: blue;
+    width: 100px;
+    height: 30px;
+}
