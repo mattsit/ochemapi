@@ -44,8 +44,6 @@ public class MoleculePanel extends JPanel {
                     break;
 
                 //g.setColor(Color.red);
-                System.out.println(dx);
-                System.out.println(dy);
                 g.drawLine(x + dy/6 + 10, y - 14, x + dx + dy/6 + 10, y + dy - 14);
             }
         }
