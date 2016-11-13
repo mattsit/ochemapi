@@ -3,7 +3,11 @@
  */
 
 /**
- * Public class that represents the CH3OH reagent.
+ * CH3OH causes the leaving groups to leave first and then it attaches to the molecule. The
+ * leaving group (F, Cl, Br, or I) is removed from the molecule and the OCH3 group attaches
+ * on to the molecule where the leaving group was.
+ *
+ * @author Debbie Pao and Matthew Sit
  */
 public class CH3OH extends Reagent {
     Molecule ch3oh = new Molecule();
@@ -27,6 +31,12 @@ public class CH3OH extends Reagent {
         ch3oh.addAtom(h4);
         ch3oh.addBond(o, h4);
     }
+
+    /** Reacts CH3OH reagent with the given molecule.
+     *
+     * @param m the given molecule
+     * @return Molecule after reaction happens
+     */
 
     public Molecule action(Molecule m) {
         Molecule copy = m.copy();

@@ -2,6 +2,11 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
+
+/**
+ * Public class that represents an atom.
+ * @author Debbie Pao and Matthew Sit
+ */
 public class Atom {
     private int atomic_num;
     private static int next_id;
@@ -14,7 +19,7 @@ public class Atom {
         Atom.next_id++;
     }
 
-    /** Gives you a hashcode integer to be used for a HashMap.
+    /** Returns a hashcode integer to be used for a HashMap.
      *
      * @return Hashcode Integer
      *
@@ -23,7 +28,7 @@ public class Atom {
         return this.atomic_num;
     }
 
-    /** Gives you the atomic number of an element.
+    /** Returns the atomic number of an element.
      *
      * @return Integer atomic number of an element.
      *
@@ -32,7 +37,7 @@ public class Atom {
         return this.atomic_num;
     }
 
-    /** Gives you the name of the Atom.
+    /** Returns the name of the Atom.
      *
      * @return String name of the atom.
      *
@@ -42,7 +47,7 @@ public class Atom {
         return Atom.atom_data[this.atomic_num][0];
     }
 
-    /** Gives you the symbol of the Atom.
+    /** Returns the symbol of the Atom.
      *
      * @return String symbol of the atom.
      *
@@ -52,7 +57,7 @@ public class Atom {
         return Atom.atom_data[this.atomic_num][1];
     }
 
-    /** Gives you the atomic mass of the element.
+    /** Returns the atomic mass of the element.
      *
      * @return Integer atomic mass of the atom.
      */
@@ -83,7 +88,7 @@ public class Atom {
         return a1.atomic_num == a2.atomic_num;
     }
 
-    /** String representation of the Atom.
+    /** Returns the String representation of the Atom.
      *
      * @return String representing the Atom.
      */

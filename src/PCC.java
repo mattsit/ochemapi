@@ -1,13 +1,18 @@
 /**
  * Created by DebbiePao on 11/12/16.
  */
-public class PCC extends Reagent {
 
-    /**
-     * PCC oxidizes alcohols.
-     * The Hydrogen is removed from the alcohol and the single bond
-     * connecting the former alcohol to a Carbon becomes a double bond.
+/**
+ * PCC oxidizes alcohols.
+ * The Hydrogen is removed from the alcohol and the single bond
+ * connecting the former alcohol to a Carbon becomes a double bond.
+ * @author Debbie Pao and Matt Sit
+ */
+public class PCC extends Reagent {
+    /** Reacts the PCC reagent wih the given molecule.
      *
+     * @param m the given molecule
+     * @return the new molecule after it has reacted with PCC
      */
     public Molecule action(Molecule m) {
         Molecule copy = m.copy();

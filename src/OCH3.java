@@ -3,7 +3,10 @@
  */
 
 /**
- * Class that represents the reagent OCH3-.
+ * OCH3- reagent attacks to the molecule and causes the leaving group (F, Cl, Br, I) to leave
+ * and then attaches to the part of the molecule where the leaving group was.
+ *
+ * @author Debbie Pao and Matt Sit
  */
 public class OCH3 extends Reagent {
 
@@ -26,9 +29,10 @@ public class OCH3 extends Reagent {
         och3.addBond(c, h3);
     }
 
-    /** Reacts OCH3- with the molecule m.
+    /** Reacts reagent OCH3- with the molecule m.
      *
      * @param m molecule to be reacted with.
+     * @return the new molecule after it has reacted with the reagent.
      */
     public Molecule action(Molecule m) {
         Molecule copy = m.copy();

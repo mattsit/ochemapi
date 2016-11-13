@@ -3,7 +3,11 @@
  */
 
 /**
- * Class that represents the LiF reagent.
+ * LiF is a strong reagent that causes the leaving groups to leave. Then it attaches to the molecule.
+ * The leaving group (F, Cl, Br, or I) is removed from the molecule and the F- group attaches
+ * on to the molecule where the leaving group was.
+ *
+ * @author Debbie Pao and Matthew Sit
  */
 public class LiF extends Reagent {
 
@@ -19,6 +23,7 @@ public class LiF extends Reagent {
     /** Reacts LiF with the given molecule.
      *
      * @param m the given molecule
+     * @return the molecule after it has reacted with the reagent
      */
     public Molecule action(Molecule m) {
         Molecule copy = m.copy();

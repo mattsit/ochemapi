@@ -2,6 +2,11 @@
  * Created by DebbiePao on 11/12/16.
  */
 import java.util.*;
+
+/**
+ * Class that represents a molecule.
+ * @author Debbie Pao and Matthew Sit
+ */
 public class Molecule implements Iterable<Atom> {
 
     private HashMap<Atom, LinkedList<Bond>> adjLists;
@@ -29,6 +34,11 @@ public class Molecule implements Iterable<Atom> {
         return ans;
     }
 
+    /** Returns a copy of this molecule.
+     *
+     * @return a copy of this molecule.
+     */
+
     public Molecule copy() {
         Molecule result = new Molecule();
         copyAdjLists(result);
@@ -36,6 +46,11 @@ public class Molecule implements Iterable<Atom> {
         copyStereochem(result);
         return result;
     }
+
+    /** Makes a copy of the given molecule's list of neighboring atoms.
+     *
+     * @param m the given molecule.
+     */
 
     private void copyAdjLists(Molecule m) {
         m.adjLists = (HashMap<Atom, LinkedList<Bond>>)adjLists.clone();
@@ -48,9 +63,19 @@ public class Molecule implements Iterable<Atom> {
         }
     }
 
+    /** Makes a copy of which atoms have already been visited for the given molecule.
+     *
+     * @param m the given molecule.
+     */
+
     private void copyIsVisited(Molecule m) {
         m.isVisited = (HashMap<Atom, Boolean>)isVisited.clone();
     }
+
+    /** Makes a copy of the sterochemistry of the given molecule.
+     *
+     * @param m the given molecule.
+     */
 
     private void copyStereochem(Molecule m) {
         m.stereochem = (HashMap<Atom, Character>)stereochem.clone();
@@ -322,6 +347,13 @@ public class Molecule implements Iterable<Atom> {
         return result;
     }
 
+    /** Getter method to find the bond strength between two given atoms.
+     *
+     * @param a1 first atom
+     * @param a2 second atom
+     * @return Integer bond Strength the bond between the two atoms.
+     */
+
     public int getBondStrength(Atom a1, Atom a2) {
         for (Bond b : adjLists.get(a1)) {
             if (Atom.equals(b.getTo(), a2)) {
@@ -385,6 +417,10 @@ public class Molecule implements Iterable<Atom> {
                     && Atom.equals(this.to, b.to);
         }
 
+        /** Copies the bond.
+         *
+         * @return a copy of the bond.
+         */
         public Bond copy() {
             return new Bond(from, to, bondStrength);
         }
@@ -400,7 +436,7 @@ public class Molecule implements Iterable<Atom> {
     }
 
     /**
-     * Creates a Breadth-First Iterator.
+     * Creates a Depth-First Iterator.
      */
 
     private class DFSIterator implements Iterator<Atom> {

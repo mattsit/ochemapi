@@ -5,7 +5,10 @@
 import java.util.HashMap;
 
 /**
- * Class that represents the NaI reagent.
+ * NaI reagent reacts similarly to the LiF reagent. It also causes the leaving group to
+ * leave the molecule. Then, the I- group attaches onto the molecule.
+ *
+ * @author Debbie Pao and Mattew Sit
  */
 public class NaI extends Reagent {
 
@@ -21,6 +24,8 @@ public class NaI extends Reagent {
     /** Reacts the NaI reagent with the given molecule.
      *
      * @param m the given molecule
+     * @return the given action
+     *
      */
     public Molecule action(Molecule m) {
         Molecule copy = m.copy();
