@@ -95,4 +95,48 @@ public class MoleculeTest {
         Reagent nai = new NaI();
         nai.action(m);
     }
+
+    @Test
+    public void testMain() {
+        Molecule m = new Molecule();
+        Atom si = new Atom(14);
+        Atom si2 = new Atom(14);
+        Atom c1 = new Atom(6);
+        Atom c2 = new Atom(6);
+        Atom o = new Atom(8);
+        Atom h1 = new Atom(1);
+        Atom h2 = new Atom(1);
+        Atom h3 = new Atom(1);
+        Atom h4 = new Atom(1);
+        Atom h5 = new Atom(1);
+        Atom h6 = new Atom(1);
+        Atom h7 = new Atom(1);
+        Atom h8 = new Atom(1);
+
+        m.addAtom(c1);
+        m.addAtom(si);
+        m.addBond(c1, si);
+        m.addAtom(h1);
+        m.addBond(c1, h1);
+        m.addAtom(c2);
+        m.addBond(c1, c2);
+        m.addAtom(si2);
+        m.addAtom(h2);
+        m.addAtom(h3);
+        m.addAtom(h4);
+        m.addBond(si, h2);
+        m.addBond(si, h3);
+        m.addBond(si, h4);
+        m.addAtom(h5);
+        m.addAtom(o);
+        m.addBond(si2, h5);
+        m.addBond(si2, o, 2);
+        m.addAtom(h6);
+        m.addAtom(h7);
+        m.addAtom(h8);
+        m.addBond(c2, h6);
+        m.addBond(c2, h7);
+        m.addBond(c2, h8);
+
+    }
 }
