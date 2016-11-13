@@ -29,6 +29,36 @@ public class Molecule implements Iterable<Atom> {
         return ans;
     }
 
+    public HashMap<Atom, LinkedList<Bond>> copyAdjacent() {
+        HashMap<Atom, LinkedList<Bond>> ans = new HashMap<>();
+        for (Object o : adjLists.keySet()) {
+            Atom a = (Atom) o;
+            LinkedList<Bond> b = adjLists.get(a);
+            ans.put(a, b);
+        }
+        return ans;
+    }
+
+    public HashMap<Atom, Boolean> copyVisited() {
+        HashMap<Atom, Boolean> ans = new HashMap<>();
+        for (Object o : isVisited.keySet()) {
+            Atom a = (Atom) o;
+            Boolean b = isVisited.get(a);
+            ans.put(a, b);
+        }
+        return ans;
+    }
+
+    public HashMap<Atom, Character> copyStereochem() {
+        HashMap<Atom, Character> ans = new HashMap<>();
+        for (Object o : stereochem.keySet()) {
+            Atom a = (Atom) o;
+            Character c = stereochem.get(a);
+            ans.put(a, c);
+        }
+        return ans;
+    }
+
     /** Adds an atom the molecule.
      *
      * @param a Atom to be added to the molecule.
