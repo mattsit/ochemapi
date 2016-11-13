@@ -24,7 +24,6 @@ public class Molecule implements Iterable<Atom> {
         double ans = 0.0;
         for (Object o : adjLists.keySet()) {
             Atom a = (Atom) o;
-            ans += a.getAtomicMass();
         }
         return ans;
     }

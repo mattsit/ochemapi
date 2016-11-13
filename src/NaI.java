@@ -2,6 +2,8 @@
  * Created by DebbiePao on 11/12/16.
  */
 
+import java.util.HashMap;
+
 /**
  * Class that represents the NaI reagent.
  */
@@ -21,6 +23,9 @@ public class NaI extends Reagent {
      * @param m the given molecule
      */
     public void action(Molecule m) {
+        //HashMap<Atom, LinkedList<>> adj = m.copyAdjacent();
+        m.copyVisited();
+        m.copyStereochem();
         Atom C = new Atom(6);
         Atom F = new Atom(9);
         Atom Cl = new Atom(17);
