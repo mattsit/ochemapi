@@ -12,11 +12,26 @@ public class PCC extends Reagent {
     public void action(Molecule m) {
         Atom oxygen = m.get(new Atom(8));
 
-        // Remove the Hydrogen
+        // Remove Oxygen's Hydrogen
         for (Object o : m.neighbors(oxygen)) {
             Atom a = (Atom)o;
             if (Atom.isEquivalent(a, new Atom(1))) {
                 m.removeAtom(a);
+                break;
+            }
+        }
+
+        // Remove Carbon's Hydrogen
+        for (Object o : m.neighbors(oxygen)) {
+            Atom a = (Atom)o;
+            if (Atom.isEquivalent(a, new Atom(6))) {
+                for (Object o2 : m.neighbors(oxygen)) {
+                    Atom a2 = (Atom)o2;
+                    if (Atom.isEquivalent(a2, new Atom(1))) {
+                        m.removeAtom(a2);
+                        break;
+                    }
+                }
                 break;
             }
         }

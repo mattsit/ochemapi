@@ -10,34 +10,31 @@ public class Main {
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.setSize(700, 700);
 
-        Molecule water = new Molecule();
-        Atom o = new Atom(8);
+        Molecule alcohol = new Molecule();
+        Atom c = new Atom(6);
         Atom h = new Atom(1);
         Atom h2 = new Atom(1);
-        water.addAtom(o);
-        water.addAtom(h);
-        water.addAtom(h2);
-        water.addBond(o, h);
-        water.addBond(o, h2);
-
-        Molecule alkene = new Molecule();
-        Atom c = new Atom(6);
         Atom h3 = new Atom(1);
         Atom h4 = new Atom(1);
-        Atom o2 = new Atom(8);
-        alkene.addAtom(c);
-        alkene.addAtom(o2);
-        alkene.addAtom(h3);
-        alkene.addAtom(h4);
-        alkene.addBond(c, h3);
-        alkene.addBond(c, h4);
-        alkene.addBond(c, o2, 2);
+        Atom o = new Atom(8);
+        alcohol.addAtom(c);
+        alcohol.addAtom(o);
+        alcohol.addAtom(h);
+        alcohol.addAtom(h2);
+        alcohol.addAtom(h3);
+        alcohol.addAtom(h4);
+        alcohol.addBond(c, h);
+        alcohol.addBond(c, h2);
+        alcohol.addBond(c, h3);
+        alcohol.addBond(c, o);
+        alcohol.addBond(h4, o);
 
         JPanel container = new JPanel();
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
-        JPanel p = new MoleculePanel(water);
-        JPanel p2 = new MoleculePanel(alkene);
+        JPanel p = new MoleculePanel(alcohol);
+        new PCC().action(alcohol);
+        JPanel p2 = new MoleculePanel(alcohol);
 
         //p.setBackground(Color.blue);
         //JPanel mainMolecule = new JPanel();

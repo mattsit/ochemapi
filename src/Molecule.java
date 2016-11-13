@@ -365,20 +365,20 @@ public class Molecule implements Iterable<Atom> {
      */
 
     public Iterator<Atom> iterator() {
-        return new BFSIterator();
+        return new DFSIterator();
     }
 
     /**
      * Creates a Breadth-First Iterator.
      */
 
-    private class BFSIterator implements Iterator<Atom> {
+    private class DFSIterator implements Iterator<Atom> {
 
-        private LinkedList<Atom> fringe;
+        private Stack<Atom> fringe;
         private HashSet<Atom> visited;
 
-        public BFSIterator() {
-            fringe = new LinkedList<>();
+        public DFSIterator() {
+            fringe = new Stack<>();
             visited = new HashSet<>();
             Atom start = adjLists.keySet().iterator().next();
             fringe.add(start);
@@ -393,7 +393,7 @@ public class Molecule implements Iterable<Atom> {
         }
 
         public Atom next() {
-            Atom curr = fringe.poll();
+            Atom curr = fringe.pop();
             List children = neighbors(curr);
             for (Object o : children) {
                 Atom a = (Atom)o;

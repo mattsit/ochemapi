@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 /**
@@ -9,6 +10,8 @@ import java.util.PriorityQueue;
 public class MoleculePanel extends JPanel {
 
     private Molecule m;
+    private ArrayList<Atom> visited;
+
 
     public MoleculePanel(Molecule m) {
         this.m = m;
@@ -18,61 +21,68 @@ public class MoleculePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setFont(g.getFont().deriveFont(g.getFont().getSize() * 2F).deriveFont(Font.BOLD));
+        visited = new ArrayList<>();
+        drawHelper(g, m.iterator(), 100, 100, 30, 30);
+        setBackground(new Color(130, 147, 153));
+    }
 
-        int x = 100;
-        int y = 100;
-        int dx = 30;
-        int dy = 30;
-
-        PriorityQueue<Integer> fringe = new PriorityQueue<>();
-        ArrayList<Atom> visited = new ArrayList<>();
-        int curr = 0;
-
+    private void drawHelper(Graphics g, Iterator mIter, int x, int y, int dx, int dy) {
         //setBorder(BorderFactory.createLineBorder(new Color(59, 59, 59)));
 
-        for (Atom a : m) {
-            visited.add(a);
-            int numNeighbors = 0;
-            for (Object o : m.neighbors(a)) {
-                if (visited.contains(o))
-                    numNeighbors--;
-                else
-                    numNeighbors -= m.getBondStrength(a, (Atom)o) - 1;
-            }
-            fringe.add(a.getValency() + numNeighbors);
+        Atom a = (Atom)mIter.next();
+        visited.add(a);
+        int numNeighbors = 0;
+        for (Object o : m.neighbors(a)) {
+            if (visited.contains(o))
+                numNeighbors--;
 
-            while (curr == 0) {
-                curr = fringe.poll();
-                if (fringe.isEmpty())
-                    break;
-            }
-            if (curr == 4) {
-                dx = -dx;
-            } else if (curr == 3) {
-                dy = -dy;
-            } else if (curr == 2) {
-                dx = -dx;
-            } else {
-                dy = -dy;
-            }
+            numNeighbors -= m.getBondStrength(a, (Atom) o) - 1;
+        }
+        int curr = a.getValency() + numNeighbors;
 
-            curr--;
-            if (!fringe.isEmpty() || curr > -1) {
-                g.setColor(new Color(59, 59, 59));
-                ((Graphics2D)g).setStroke(new BasicStroke(4F));
-                g.drawLine(x + 10, y - 10, x + dx + 10, y + dy - 10);
-            }
-
-            g.setColor(new Color(224, 211, 132));
-            g.fillRoundRect(x,y-20,20,20,5,5);
-            g.setColor(new Color(115, 115, 115));
-            g.drawString(a.getAtomSymbol(), x, y);
-
-
-            x+=dx;
-            y+=dy;
+        if (curr >= 4) {
+            g.setColor(new Color(59, 59, 59));
+            ((Graphics2D) g).setStroke(new BasicStroke(4F));
+            g.drawLine(x + 10, y - 10, x - dx + 10, y + dy - 10);
         }
 
-        setBackground(new Color(130, 147, 153));
+        if (curr >= 3) {
+            g.setColor(new Color(59, 59, 59));
+            ((Graphics2D) g).setStroke(new BasicStroke(4F));
+            g.drawLine(x + 10, y - 10, x - dx + 10, y - dy - 10);
+        }
+
+        if (curr >= 2) {
+            g.setColor(new Color(59, 59, 59));
+            ((Graphics2D) g).setStroke(new BasicStroke(4F));
+            g.drawLine(x + 10, y - 10, x + dx + 10, y - dy - 10);
+        }
+
+        if (curr >= 1) {
+            g.setColor(new Color(59, 59, 59));
+            ((Graphics2D) g).setStroke(new BasicStroke(4F));
+            g.drawLine(x + 10, y - 10, x + dx + 10, y + dy - 10);
+        }
+
+        if (curr == 4) {
+            drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
+            drawHelper(g, mIter, x+dx, y+dx, -dx, dy);
+            drawHelper(g, mIter, x-dx, y+dx, -dx, -dy);
+            drawHelper(g, mIter, x+dx, y-dx, dx, dy);
+        } else if (curr == 3) {
+            drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
+            drawHelper(g, mIter, x+dx, y+dx, -dx, dy);
+            drawHelper(g, mIter, x-dx, y+dx, -dx, -dy);
+        } else if (curr == 2) {
+            drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
+            drawHelper(g, mIter, x+dx, y+dx, -dx, dy);
+        } else if (curr == 1){
+            drawHelper(g, mIter, x+dx, y+dy, dx, -dy);
+        }
+
+        g.setColor(new Color(224, 211, 132));
+        g.fillRoundRect(x - 1, y - 19, 20, 20, 5, 5);
+        g.setColor(new Color(115, 115, 115));
+        g.drawString(a.getAtomSymbol(), x, y);
     }
 }
