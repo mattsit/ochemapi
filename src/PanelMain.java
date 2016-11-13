@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,20 +10,43 @@ import java.awt.event.ActionListener;
  */
 public class PanelMain extends JPanel {
 
-    @Override
-    public void paintComponent(Graphics g) {
-        g.drawString("Main", 20, 20);
-        g.fill3DRect(0, 0, 20, 20, false);
-        JButton entr = new JButton("Enter");
-        JButton ext = new JButton("Exit");
+    public PanelMain() {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JLabel title = new JLabel("Organic Chemistry API Demo");
+        title.setFont(new Font("Verdana",1,20));
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        title.setBorder(BorderFactory.createLineBorder(new Color(59, 59, 59), 2));
 
-        ext.addActionListener(new ActionListener() {
+        JButton btnEnter = new JButton("Enter");
+        JButton btnExit = new JButton("Exit");
+
+        btnEnter.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        //JFrame cards = (JFrame) SwingUtilities.getWindowAncestor(this);
+        JPanel me = this;
+        btnEnter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("exiting");
-
+                JPanel cards = (JPanel) me.getParent();
+                CardLayout cl = (CardLayout) cards.getLayout();
+                cl.show(cards, "Tools");
+                cards.getParent().setSize(cards.getParent().getWidth(), cards.getParent().getHeight()+1);
+                cards.getParent().setSize(cards.getParent().getWidth(), cards.getParent().getHeight()-1);
             }
         });
-        this.add(ext);
+
+        btnExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        add(Box.createVerticalStrut(200));
+        add(title);
+        add(Box.createVerticalStrut(70));
+        add(btnEnter);
+        add(Box.createVerticalStrut(10));
+        add(btnExit);
     }
 
 }
