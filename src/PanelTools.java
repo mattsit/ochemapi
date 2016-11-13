@@ -33,11 +33,7 @@ public class PanelTools extends JPanel {
 
         btnMech.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JPanel cards = (JPanel) me.getParent();
-                CardLayout cl = (CardLayout) cards.getLayout();
-                cl.show(cards, "Mech");
-                cards.getParent().setSize(cards.getParent().getWidth(), cards.getParent().getHeight()+1);
-                cards.getParent().setSize(cards.getParent().getWidth(), cards.getParent().getHeight()-1);
+                new PanelMech();
             }
         });
 
