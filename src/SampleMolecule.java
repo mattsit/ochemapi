@@ -55,7 +55,7 @@ public class SampleMolecule {
 
     }
 
-    public static Molecule cho3() {  //test och3-
+    public static Molecule ch3oh() {  //test ch3oh
         Molecule ans = new Molecule();
         Atom c1 = new Atom(6);
         Atom c2 = new Atom(6);
@@ -115,6 +115,7 @@ public class SampleMolecule {
         Atom h6 = new Atom(1);
         Atom h7 = new Atom(1);
 
+        m.addAtom(cl);
         m.addAtom(c1);
         m.addAtom(c2);
         m.addBond(c1, c2);
@@ -138,8 +139,41 @@ public class SampleMolecule {
         return m;
     }
 
-//    public static Molecule lif() { //test LiF
-//        Molecule molecule = new Molecule();
-//
-//    }
+    public static Molecule lif() { //test LiF
+        Molecule molecule = new Molecule();
+        Atom c1 = new Atom(6);
+        Atom c2 = new Atom(6);
+        Atom c3 = new Atom(6);
+        Atom h = new Atom(1);
+        Atom h1 = new Atom(1);
+        Atom h2 = new Atom(1);
+        Atom h3 = new Atom(1);
+        Atom h4 = new Atom(1);
+        Atom h5 = new Atom(1);
+        Atom h6 = new Atom(1);
+        Atom i = new Atom(53);
+
+        molecule.addAtom(c1);
+        molecule.addAtom(c2);
+        molecule.addBond(c1, c2);
+        molecule.addAtom(c3);
+        molecule.addBond(c1, c3);
+        molecule.addAtom(i);
+        molecule.addBond(c1, i);
+        molecule.addAtom(h);
+        molecule.addAtom(h1);
+        molecule.addAtom(h2);
+        molecule.addBond(c2, h);
+        molecule.addBond(c2, h1);
+        molecule.addBond(c2, h2);
+        molecule.addAtom(h3);
+        molecule.addAtom(h4);
+        molecule.addAtom(h5);
+        molecule.addBond(c3, h3);
+        molecule.addBond(c3, h4);
+        molecule.addBond(c3, h5);
+        molecule.addAtom(h6);
+        molecule.addBond(c1, h6);
+        return molecule;
+    }
 }
