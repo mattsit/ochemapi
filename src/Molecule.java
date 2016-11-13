@@ -76,7 +76,8 @@ public class Molecule implements Iterable<Atom> {
     }
 
     /** Removes the specified bond between the two atoms.
-     *
+     * @param a1 first atom
+     * @param a2 second atom
      * @return 1 if success, 0 if fail.
      */
     public int removeBond(Atom a1, Atom a2) {
@@ -115,6 +116,9 @@ public class Molecule implements Iterable<Atom> {
 
     /** Changes the bond strength.
      *
+     * @param a1 first atom
+     * @param a2 second atom
+     * @param bondStrength the strength of the bond (whether single, double, or triple)
      * @return 1 if success, 0 if fail.
      */
     public int changeBond(Atom a1, Atom a2, int bondStrength) {
@@ -175,6 +179,9 @@ public class Molecule implements Iterable<Atom> {
      * An atom is a stereocenter in the conext of a molecule if:
      *  - There are 4 atomic groups extending from the atom (no double/triple bonds).
      *  - Each of these groups are nonequivalent/unique.
+     *
+     *  @param a the atom
+     *  @return True if is a stereocenter, False if not
      */
     public boolean isStereocenter(Atom a) {
         if (adjLists.get(a).size() != 4) {
@@ -241,6 +248,7 @@ public class Molecule implements Iterable<Atom> {
     /** Finds the total atomic number of the molecule.
      *
      * @param a starting atom
+     * @return Integer total atomic number
      */
 
     private int getWeight(Atom a) {
@@ -260,7 +268,7 @@ public class Molecule implements Iterable<Atom> {
      *
      * @param from the first atom
      * @param to second atom
-     * @return
+     * @return True if there is a bond, False if none
      */
     // Return true if there is an Bond from Atom "from" to Atom "to";
     // return false otherwise.
@@ -273,10 +281,10 @@ public class Molecule implements Iterable<Atom> {
         return false;
     }
 
-    /**
+    /** Get the neighboring atoms of the current atom in a molecule.
      *
-     * @param a
-     * @return
+     * @param a the current atom
+     * @return a list of all the neighboring atoms
      */
 
     public List neighbors(Atom a) {
@@ -288,7 +296,7 @@ public class Molecule implements Iterable<Atom> {
     }
 
     /**
-     *
+     * Private class that describes the bonds in a molecule.
      */
 
     private class Bond {
@@ -302,37 +310,37 @@ public class Molecule implements Iterable<Atom> {
             this.bondStrength = bondStrength;
         }
 
-        /**
+        /** Returns one atom that is sharing the bond.
          *
-         * @return
+         * @return an Atom
          */
 
         public Atom getFrom() {
             return this.from;
         }
 
-        /**
+        /** Returns the other atom that is sharing the bond.
          *
-         * @return
+         * @return an Atom
          */
 
         public Atom getTo() {
             return this.to;
         }
 
-        /**
+        /** Returns the bond strength of the bond.
          *
-         * @return
+         * @return Integer bond strength
          */
 
         public int getBondStrength() {
             return this.bondStrength;
         }
 
-        /**
+        /** Checks whether one bond strength is equal to another bond strength.
          *
-         * @param b
-         * @return
+         * @param b the other bond your are comparing this bond to.
+         * @return True if equal, False if not equal.
          */
 
         public boolean equals(Bond b) {
@@ -342,9 +350,9 @@ public class Molecule implements Iterable<Atom> {
         }
     }
 
-    /**
+    /** Returns an Iterator.
      *
-     * @return
+     * @return an Iterator
      */
 
     public Iterator<Atom> iterator() {
@@ -352,7 +360,7 @@ public class Molecule implements Iterable<Atom> {
     }
 
     /**
-     *
+     * Creates a Breadth-First Iterator.
      */
 
     private class BFSIterator implements Iterator<Atom> {
