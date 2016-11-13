@@ -295,6 +295,15 @@ public class Molecule implements Iterable<Atom> {
         return result;
     }
 
+    public int getBondStrength(Atom a1, Atom a2) {
+        for (Bond b : adjLists.get(a1)) {
+            if (Atom.equals(b.getTo(), a2)) {
+                return b.getBondStrength();
+            }
+        }
+        return 0;
+    }
+
     /**
      * Private class that describes the bonds in a molecule.
      */
@@ -345,8 +354,8 @@ public class Molecule implements Iterable<Atom> {
 
         public boolean equals(Bond b) {
             return this.bondStrength == b.bondStrength
-                    && Atom.isEquivalent(this.from, b.from)
-                    && Atom.isEquivalent(this.to, b.to);
+                    && Atom.equals(this.from, b.from)
+                    && Atom.equals(this.to, b.to);
         }
     }
 
