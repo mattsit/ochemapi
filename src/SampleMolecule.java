@@ -26,7 +26,7 @@ public class SampleMolecule {
         return alcohol;
     }
 
-    public static Molecule bromine() { //test naI or LiF or och3- or ch3oh
+    public static Molecule bromine() { //test naI or LiF
         Molecule bromine = new Molecule();
         Atom c1 = new Atom(6);
         Atom c2 = new Atom(6);
@@ -36,6 +36,7 @@ public class SampleMolecule {
         Atom h3 = new Atom(1);
         Atom h4 = new Atom(1);
         Atom h5 = new Atom(1);
+        bromine.addAtom(br);
         bromine.addAtom(c1);
         bromine.addAtom(c2);
         bromine.addBond(c1, c2);
@@ -54,7 +55,7 @@ public class SampleMolecule {
 
     }
 
-    public static Molecule ch3oh() { //test ch3oh
+    public static Molecule cho3() {  //test och3-
         Molecule ans = new Molecule();
         Atom c1 = new Atom(6);
         Atom c2 = new Atom(6);
@@ -100,4 +101,45 @@ public class SampleMolecule {
         return ans;
     }
 
+    public static Molecule water() { //test water
+        Molecule m = new Molecule();
+        Atom cl = new Atom(17);
+        Atom c1 = new Atom(6);
+        Atom c2 = new Atom(6);
+        Atom c3 = new Atom(6);
+        Atom h = new Atom(1);
+        Atom h2 = new Atom(1);
+        Atom h3 = new Atom(1);
+        Atom h4 = new Atom(1);
+        Atom h5 = new Atom(1);
+        Atom h6 = new Atom(1);
+        Atom h7 = new Atom(1);
+
+        m.addAtom(c1);
+        m.addAtom(c2);
+        m.addBond(c1, c2);
+        m.addAtom(c3);
+        m.addBond(c2, c3);
+        m.addAtom(h);
+        m.addAtom(h2);
+        m.addAtom(h3);
+        m.addBond(c1, h);
+        m.addBond(c1, h2);
+        m.addBond(c1, h3);
+        m.addAtom(h4);
+        m.addAtom(h5);
+        m.addBond(c2, h4);
+        m.addBond(c2, h5);
+        m.addAtom(h6);
+        m.addAtom(h7);
+        m.addBond(c3, h6);
+        m.addBond(c3, h7);
+        m.addBond(c3, cl);
+        return m;
+    }
+
+//    public static Molecule lif() { //test LiF
+//        Molecule molecule = new Molecule();
+//
+//    }
 }
