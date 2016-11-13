@@ -9,73 +9,6 @@ public class FrameMech extends JFrame {
     public FrameMech() {
         super("Mechanisms and Molecular Representations");
 
-        JTextField t = new JTextField();
-        JButton calculate = new JButton("Calculate!");
-        JButton h = new JButton("H");
-        JButton he = new JButton("He");
-        JButton li = new JButton("Li");
-        JButton be = new JButton ("Be");
-        JButton b = new JButton("B");
-        JButton c = new JButton("C");
-        JButton n = new JButton("N");
-        JButton o = new JButton("O");
-        JButton fluorine = new JButton("F");
-        JButton ne = new JButton("Ne");
-        JButton na = new JButton("Na");
-        JButton mg = new JButton("Mg");
-        JButton al = new JButton("Al");
-        JButton si = new JButton("Si");
-        JButton p = new JButton("P");
-        JButton s = new JButton("S");
-        JButton cl = new JButton("Cl");
-
-        t.setBounds(30,40,280,30);
-        h.setBounds(40,100,50,40);
-        he.setBounds(110,100,50,40);
-        li.setBounds(180,100,50,40);
-
-        be.setBounds(40,170,50,40);
-        b.setBounds(110,170,50,40);
-        c.setBounds(180,170,50,40);
-        n.setBounds(250,170,50,40);
-
-        o.setBounds(40,240,50,40);
-        fluorine.setBounds(110,240,50,40);
-        ne.setBounds(180,240,50,40);
-        na.setBounds(250,240,50,40);
-
-        mg.setBounds(40,310,50,40);
-        al.setBounds(110,310,50,40);
-        si.setBounds(180,310,50,40);
-        p.setBounds(250,310,50,40);
-
-        calculate.setBounds(120,380,100,40);
-
-        add(t);
-        add(h);
-        add(he);
-        add(be);
-        add(b);
-        add(c);
-        add(n);
-        add(o);
-        add(fluorine);
-        add(ne);
-        add(na);
-        add(mg);
-        add(al);
-        add(si);
-        add(p);
-        add(calculate);
-
-        setLayout(null);
-        setVisible(true);
-        setSize(350,500);
-        setResizable(false);
-    }
-
-    public void temp(Graphics g) {
-
         JButton btnGenerate = new JButton("React!");
         btnGenerate.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -83,7 +16,34 @@ public class FrameMech extends JFrame {
         JButton ch3oh = new JButton("CH3OH");
         JButton nai = new JButton("NaI");
         JButton och3 = new JButton("OCH3");
-        JButton h2O = new JButton("H2O");
+        JButton h2o = new JButton("H2O");
 
+        lif.setBounds(30,40,90,40);
+        ch3oh.setBounds(130,40,90,40);
+        nai.setBounds(230,40,90,40);
+        och3.setBounds(330,40,90,40);
+        h2o.setBounds(430,40,90,40);
+
+        JPanel container1 = new MoleculePanel(SampleMolecule.alcohol());
+        JPanel container2 = new MoleculePanel((new PCC()).action(SampleMolecule.alcohol()));
+
+        container1.setBounds(30,100,240,240);
+        container2.setBounds(280,100,240,240);
+
+        add(lif);
+        add(ch3oh);
+        add(nai);
+        add(och3);
+        add(h2o);
+
+        add(container1);
+        add(container2);
+
+
+        setLayout(null);
+        setVisible(true);
+        setSize(550,500);
+        setResizable(false);
     }
+
 }
