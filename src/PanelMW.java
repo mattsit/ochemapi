@@ -1,15 +1,17 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Matthew on 11/13/2016.
  */
-public class PanelMW extends JPanel {
-    @Override
-    public void paintComponent(Graphics g) {
-        g.drawString("MW", 20, 20);
+public class PanelMW extends JFrame {
 
-        JFrame f = new JFrame("Calculator");
+    public PanelMW() {
+        super("Molecular Weight Calculator");
+
         JTextField t = new JTextField();
         JButton calculate = new JButton("Calculate!");
         JButton h = new JButton("H");
@@ -52,46 +54,28 @@ public class PanelMW extends JPanel {
 
         calculate.setBounds(120,380,100,40);
 
-        f.add(t);
-        f.add(h);
-        f.add(he);
-        f.add(be);
-        f.add(b);
-        f.add(c);
-        f.add(n);
-        f.add(o);
-        f.add(fluorine);
-        f.add(ne);
-        f.add(na);
-        f.add(mg);
-        f.add(al);
-        f.add(si);
-        f.add(p);
-        f.add(calculate);
+        add(t);
+        add(h);
+        add(he);
+        add(be);
+        add(b);
+        add(c);
+        add(n);
+        add(o);
+        add(fluorine);
+        add(ne);
+        add(na);
+        add(mg);
+        add(al);
+        add(si);
+        add(p);
+        add(calculate);
 
-        f.setLayout(null);
-        f.setVisible(true);
-        f.setSize(350,500);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setResizable(false);
+        setLayout(null);
+        setVisible(true);
+        setSize(350,500);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
-//        h.addActionListener(this);
-//        he.addActionListener(this);
-//        li.addActionListener(this);
-//        be.addActionListener(this);
-//        b.addActionListener(this);
-//        c.addActionListener(this);
-//        n.addActionListener(this);
-//        o.addActionListener(this);
-//        fluorine.addActionListener(this);
-//        ne.addActionListener(this);
-//        na.addActionListener(this);
-//        mg.addActionListener(this);
-//        al.addActionListener(this);
-//        si.addActionListener(this);
-//        p.addActionListener(this);
-//        s.addActionListener(this);
-//        cl.addActionListener(this);
-//        calculate.addActionListener(this);
     }
 }

@@ -17,19 +17,17 @@ public class PanelTools extends JPanel {
 
         JButton btnMW = new JButton("Molecular Weight");
         JButton btnMech = new JButton("Mechanisms");
+        JButton btnExit = new JButton("Exit");
 
         btnMW.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnMech.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         //JFrame cards = (JFrame) SwingUtilities.getWindowAncestor(this);
         JPanel me = this;
         btnMW.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JPanel cards = (JPanel) me.getParent();
-                CardLayout cl = (CardLayout) cards.getLayout();
-                cl.show(cards, "MW");
-                cards.getParent().setSize(cards.getParent().getWidth(), cards.getParent().getHeight()+1);
-                cards.getParent().setSize(cards.getParent().getWidth(), cards.getParent().getHeight()-1);
+                new PanelMW();
             }
         });
 
@@ -43,11 +41,19 @@ public class PanelTools extends JPanel {
             }
         });
 
+        btnExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
         add(Box.createVerticalStrut(200));
         add(title);
         add(Box.createVerticalStrut(70));
         add(btnMW);
         add(Box.createVerticalStrut(10));
         add(btnMech);
+        add(Box.createVerticalStrut(10));
+        add(btnExit);
     }
 }

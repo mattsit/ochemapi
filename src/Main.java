@@ -24,13 +24,11 @@ public class Main {
         JPanel main = new PanelMain();
         JPanel tools = new PanelTools();
         JPanel mech = new PanelMech();
-        JPanel mw = new PanelMW();
 
         JPanel cards = new JPanel(new CardLayout());
         cards.add(main, "Main");
         cards.add(tools, "Tools");
         cards.add(mech, "Mech");
-        cards.add(mw, "MW");
 
         CardLayout cl = (CardLayout) cards.getLayout();
 
