@@ -36,7 +36,8 @@ public class MoleculePanel extends JPanel {
             for (Object o : m.neighbors(a)) {
                 if (visited.contains(o))
                     numNeighbors--;
-                if (m.getBond())
+                else
+                    numNeighbors -= m.getBondStrength(a, (Atom)o) - 1;
             }
             fringe.add(a.getValency() + numNeighbors);
 

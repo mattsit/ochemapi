@@ -31,7 +31,7 @@ public class Main {
         alkene.addAtom(h4);
         alkene.addBond(c, h3);
         alkene.addBond(c, h4);
-        alkene.addBond(c, o, 2);
+        alkene.addBond(c, o2, 2);
 
         JPanel container = new JPanel();
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));

@@ -374,11 +374,11 @@ public class Molecule implements Iterable<Atom> {
 
     private class BFSIterator implements Iterator<Atom> {
 
-        private PriorityQueue<Atom> fringe;
+        private LinkedList<Atom> fringe;
         private HashSet<Atom> visited;
 
         public BFSIterator() {
-            fringe = new PriorityQueue<>();
+            fringe = new LinkedList<>();
             visited = new HashSet<>();
             Atom start = adjLists.keySet().iterator().next();
             fringe.add(start);
