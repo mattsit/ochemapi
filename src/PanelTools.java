@@ -42,7 +42,5 @@ public class PanelTools extends JPanel {
         this.add(mw);
         this.add(mech);
         this.add(ext);
-
-
     }
 }
