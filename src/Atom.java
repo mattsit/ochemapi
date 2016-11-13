@@ -92,28 +92,36 @@ public class Atom {
         return "(" + getAtomSymbol() + ")";
     }
 
+    public int getValency() {
+        return Integer.parseInt(Atom.atom_data[this.atomic_num][3]);
+    }
+
     /** Stores all the data for the atoms in the periodic table.
-     *
+     *  (Index) Atomic Number
+     *  [0] Name
+     *  [1] Atomic Symbol
+     *  [2] Atomic Weight
+     *  [3] Valency
      */
     private static String[][] atom_data = {
-        {"Undefined", "XX", "XX"},
-        {"Hydrogen", "H", "1.0079"},      // 1
+        {"Undefined", "XX", "XX", "0"},
+        {"Hydrogen", "H", "1.0079", "1"},      // 1
         {"Helium", "He", "4.0026"},       // 2
         {"Lithium", "Li", "6.941"},      // 3
         {"Beryllium", "Be", "9.0122"},    // 4
         {"Boron", "B", "10.811"},         // 5
-        {"Carbon", "C", "12.0107"},        // 6
-        {"Nitrogen", "N", "14.0067"},      // 7
-        {"Oxygen", "O", "15.9994"},        // 8
-        {"Fluorine", "F", "18.9984"},      // 9
-        {"Neon", "Ne", "20.1797"},         // 10
+        {"Carbon", "C", "12.0107", "4"},        // 6
+        {"Nitrogen", "N", "14.0067", "3"},      // 7
+        {"Oxygen", "O", "15.9994", "2"},        // 8
+        {"Fluorine", "F", "18.9984", "1"},      // 9
+        {"Neon", "Ne", "20.1797", "0"},         // 10
         {"Sodium", "Na", "22.9897"},       // 11
         {"Magnesium", "Mg", "24.305"},    // 12
         {"Aluminium", "Al", "26.9815"},    // 13
         {"Silicon", "Si", "28.0855"},      // 14
         {"Phosphorus", "P", "30.9738"},    // 15
         {"Sulfur", "S", "32.065"},        // 16
-        {"Chlorine", "Cl", "35.453"},     // 17
+        {"Chlorine", "Cl", "35.453", "0"},     // 17
         {"Argon", "Ar", "39.948"},        // 18
         {"Potassium", "K", "39.0983"},     // 19
         {"Calcium", "Ca", "40.078"},      // 20
@@ -131,7 +139,7 @@ public class Atom {
         {"Germanium", "Ge", "72.64"},    // 32
         {"Arsenic", "As", "74.9216"},      // 33
         {"Selenium", "Se", "78.96"},     // 34
-        {"Bromine", "Br", "79.904"},      // 35
+        {"Bromine", "Br", "79.904", "0"},      // 35
         {"Krypton", "Kr", "83.8"},      // 36
         {"Rubidium", "Rb", "85.4678"},     // 37
         {"Strontium", "Sr", "87.62"},    // 38
@@ -149,6 +157,6 @@ public class Atom {
         {"Tin", "Sn", "118.71"},          // 50
         {"Antimony", "Sb", "121.76"},     // 51
         {"Tellurium", "Te", "127.6"},    // 52
-        {"Iodine", "I", "126.9045"}         // 53
+        {"Iodine", "I", "126.9045", "0"}         // 53
     };
 }
