@@ -10,7 +10,7 @@ public abstract class Reagent extends Molecule {
     /** Abstract method for reacting reagents with the given molecule.
      *
      * @param m the given molecule
-     * @return The molecule after being reacted. 
+     * @return The molecule after being reacted.
      */
     public abstract Molecule action(Molecule m);
 }

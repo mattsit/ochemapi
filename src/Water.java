@@ -3,7 +3,11 @@
  */
 
 /**
- * A class that represents the reagent water (H2O).
+ * Water is a weak attacker so the leaving groups leaves first, thus forming an alcohol
+ * group where the leaving group was before.
+ *
+ * @author Debbie Pao and Matthew Sit
+ *
  */
 public class Water extends Reagent {
     Atom o = new Atom(8);
@@ -22,6 +26,7 @@ public class Water extends Reagent {
     /** Reacts the reagent water with the given molecule.
      *
      * @param m the given molecule
+     * @return the molecule after it has reacted with the reagent water.
      */
     public Molecule action(Molecule m) {
         Molecule copy = m.copy();
