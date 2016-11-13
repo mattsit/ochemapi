@@ -60,12 +60,13 @@ public class Molecule implements Iterable<Atom> {
         addBond(a1, a2, bondStrength, 'X');
     }
 
-    /**
+    /** Adds a single, double, or triple bond to the molecule between the two specified atoms
+     * with sterochemistry taken into account.
      *
-     * @param a1
-     * @param a2
-     * @param bondStrength
-     * @param stereochem
+     * @param a1 first atom
+     * @param a2 second atom
+     * @param bondStrength single, double, or triple bond
+     * @param stereochem wedged or dashed
      */
     public void addBond(Atom a1, Atom a2, int bondStrength, char stereochem) {
         adjLists.get(a1).add(new Bond(a1, a2, bondStrength));
@@ -94,6 +95,10 @@ public class Molecule implements Iterable<Atom> {
         return 0;
     }
 
+    /** Removes the atom from the molecule.
+     *
+     * @param a the atom to be removed
+     */
     public void removeAtom(Atom a) {
         for (Bond b1 : adjLists.get(a)) {
             for (Bond b2 : adjLists.get(b1.getTo())) {
@@ -108,7 +113,7 @@ public class Molecule implements Iterable<Atom> {
         stereochem.remove(a);
     }
 
-    /**
+    /** Changes the bond strength.
      *
      * @return 1 if success, 0 if fail.
      */
@@ -127,6 +132,13 @@ public class Molecule implements Iterable<Atom> {
         }
         return 0;
     }
+
+    /** Checks to see if the two molecules are identical.
+     *
+     * @param m1 first molecule
+     * @param m2 second molecule
+     * @return True if is equal, False if not.
+     */
 
     public boolean isEqual(Molecule m1, Molecule m2) {
         for (Object o: m1.adjLists.keySet()) {
@@ -189,15 +201,33 @@ public class Molecule implements Iterable<Atom> {
         }
     }
 
+    /** Keeps track of whether the atom has been visited before.
+     *
+     * @param a Atom that has been visited.
+     */
+
     private void visit(Atom a) {
         isVisited.put(a, true);
     }
+
+    /** Checks whether an Atom has been visited or not previously.
+     *
+     * @param a the atom that is checked to see if has been visited.
+     * @return True if has been visited, False if has not.
+     */
 
     private boolean isVisited(Atom a) {
         return isVisited.get(a);
     }
 
-    public boolean isEquivalentGroup(Atom a1, Atom a2) {
+    /** Checks to see if two parts of a molecule are the same.
+     *
+     * @param a1 first part of molecule
+     * @param a2 second part of molecule
+     * @return True if equivalent, False if not.
+     */
+
+    private boolean isEquivalentGroup(Atom a1, Atom a2) {
         if (Atom.isEquivalent(a1, a2)) {
             return false;
         }
@@ -207,6 +237,11 @@ public class Molecule implements Iterable<Atom> {
 
         return getWeight(a1) == getWeight(a2);
     }
+
+    /** Finds the total atomic number of the molecule.
+     *
+     * @param a starting atom
+     */
 
     private int getWeight(Atom a) {
         int result = a.getAtomNum();
@@ -221,6 +256,12 @@ public class Molecule implements Iterable<Atom> {
         return result;
     }
 
+    /** Finds if there is a bond from one atom to the other.
+     *
+     * @param from the first atom
+     * @param to second atom
+     * @return
+     */
     // Return true if there is an Bond from Atom "from" to Atom "to";
     // return false otherwise.
     public boolean isAdjacent(Atom from, Atom to) {
@@ -232,6 +273,12 @@ public class Molecule implements Iterable<Atom> {
         return false;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
+
     public List neighbors(Atom a) {
         ArrayList<Atom> result = new ArrayList<>();
         for (int i = 0; i < adjLists.get(a).size(); i++) {
@@ -239,6 +286,10 @@ public class Molecule implements Iterable<Atom> {
         }
         return result;
     }
+
+    /**
+     *
+     */
 
     private class Bond {
         private Atom from;
@@ -251,17 +302,38 @@ public class Molecule implements Iterable<Atom> {
             this.bondStrength = bondStrength;
         }
 
+        /**
+         *
+         * @return
+         */
+
         public Atom getFrom() {
             return this.from;
         }
+
+        /**
+         *
+         * @return
+         */
 
         public Atom getTo() {
             return this.to;
         }
 
+        /**
+         *
+         * @return
+         */
+
         public int getBondStrength() {
             return this.bondStrength;
         }
+
+        /**
+         *
+         * @param b
+         * @return
+         */
 
         public boolean equals(Bond b) {
             return this.bondStrength == b.bondStrength
@@ -270,9 +342,18 @@ public class Molecule implements Iterable<Atom> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
+
     public Iterator<Atom> iterator() {
         return new DFSIterator();
     }
+
+    /**
+     *
+     */
 
     private class DFSIterator implements Iterator<Atom> {
 
